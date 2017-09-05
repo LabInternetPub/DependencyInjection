@@ -42,7 +42,7 @@ public class Client {
 Note that the Client creates a new ServiceExample in its constructor method which poses the following programming flaws:
 * The Client depends upon a concrete class
 * The Client is not flexible, if it needs another kind of Service the Client code should be modified
-* The Client is tightly coupled with ServiceExample. If the Service iis modified the Client may be  broken
+* The Client is tightly coupled with ServiceExample. If the Service is modified the Client may be  broken
 
 ### Three types of dependency injection
 There are at least three ways an object can receive a reference to an external module:
@@ -109,4 +109,12 @@ In this repository you'll find an example inspired from the one in the book Spri
 * javaConfig: illustrates how to use the bean names for injection
 * AutomaticWiring: uses the implicit bean discovery
 
-The example basically consists of a Knight that can embrace in different types of Quests wich are . These injected to the knight.
+The example basically consists of Knights that can embrace in different types of Quests wich are injected to them. There are two kinds of knight (BraveKnight and DamselRescuingKnight) and two kind of Quests (SlayDragonQuest and RescueDamselQuest). The first kind of knight uses the first kind of quest and the second kind of knight the second kind of quest.
+
+* Master: The configuration file defines two knights of the type BraveKnight and one of DamselRescuingKnight, and one quest of type SlayDragonQuest. Note that the DamselRescuingKnight is creating its own quest in the contruction method, that is, it is not using the dependency injection. See also that the other two knigths in the configuration file are calling directly the quest() method to inject the desired quest.
+
+* javaConfig: Here the configuration file defines the same knights but two different quest (one for each type of quest). Observe also that the DamselRescuingKnight is now using the dependency injection. The main difference with the former brach is that the injection is done by the name of the definied beans rather than calling the defining methods.
+
+* automaticWiring: Here the configuration file only indicates where the Spring must scan to look for the beans that should create. In the package domain (the one that is scanned) contains classes that are noted as @Component indicating that an object of the classes must be created (the beans). Note that knights are injected the quest by means of the @Autowired anotation.
+
+See that in the last case only one object of each class is created. So we cannot have two differents knights of the same type as we had in the first two branches.
