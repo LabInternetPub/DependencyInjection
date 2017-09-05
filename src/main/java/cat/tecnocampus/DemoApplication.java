@@ -1,6 +1,7 @@
 package cat.tecnocampus;
 
 import cat.tecnocampus.domain.BraveKnight;
+import cat.tecnocampus.domain.DamselRescuingKnight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -16,11 +17,15 @@ public class DemoApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner (BraveKnight braveKnight) {
+	CommandLineRunner runner (BraveKnight braveKnightA, DamselRescuingKnight damselRescuingKnight) {
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... strings) throws Exception {
-				braveKnight.embarkQuest();
+				braveKnightA.embarkQuest();
+
+				System.out.println();
+
+				damselRescuingKnight.embarkOnQuest();
 			}
 		};
 	}
