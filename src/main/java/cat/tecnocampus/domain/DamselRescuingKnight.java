@@ -8,8 +8,8 @@ import java.io.PrintStream;
 public class DamselRescuingKnight {
     private RescueDamselQuest quest;
 
-    public DamselRescuingKnight() {
-        quest = new RescueDamselQuest(System.out);
+    public DamselRescuingKnight(RescueDamselQuest quest) {
+        this.quest = quest;
     }
 
     public void embarkOnQuest() {

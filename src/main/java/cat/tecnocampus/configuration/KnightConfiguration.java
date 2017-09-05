@@ -1,9 +1,6 @@
 package cat.tecnocampus.configuration;
 
-import cat.tecnocampus.domain.BraveKnight;
-import cat.tecnocampus.domain.Quest;
-import cat.tecnocampus.domain.RescueDamselQuest;
-import cat.tecnocampus.domain.SlayDragonQuest;
+import cat.tecnocampus.domain.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +13,7 @@ import org.springframework.context.annotation.Primary;
 public class KnightConfiguration {
 
     @Bean
-    public BraveKnight braveKnight(Quest questDragon) {
+    public BraveKnight braveKnightA(Quest questDragon) {
         return new BraveKnight(questDragon, "AAAA");
     }
 
@@ -25,14 +22,18 @@ public class KnightConfiguration {
         return new BraveKnight(questDamsel, "BBBB");
     }
 
+    @Bean
+    public DamselRescuingKnight damselRescuingKnight(RescueDamselQuest questDamsel) {
+        return new DamselRescuingKnight(questDamsel);
+    }
 
     @Bean
-    Quest questDragon() {
+    public Quest questDragon() {
         return new SlayDragonQuest(System.out);
     }
 
     @Bean
-    Quest questDamsel() {
+    public Quest questDamsel() {
         return new RescueDamselQuest(System.out);
     }
 }
