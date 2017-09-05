@@ -26,12 +26,12 @@ public class KnightConfiguration {
     }
 
     @Bean
-    DamselRescuingKnight damselRescuingKnight() {
+    public DamselRescuingKnight damselRescuingKnight() {
         return  new DamselRescuingKnight();
     }
 
     @Bean
-    Quest quest() {
+    public Quest quest() {
         return new SlayDragonQuest(System.out);
     }
 }
