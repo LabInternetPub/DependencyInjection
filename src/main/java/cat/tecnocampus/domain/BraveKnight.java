@@ -1,14 +1,19 @@
 package cat.tecnocampus.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  * Created by roure on 27/09/2016.
  */
+@Component
 public class BraveKnight {
     private Quest quest;
-    private String me;
+    private String me = "Default name";
 
-    public BraveKnight(Quest quest) {
-        this.quest = quest;
+    @Autowired
+    public BraveKnight(Quest slayDragonQuest) {
+        this.quest = slayDragonQuest;
     }
 
     public BraveKnight(Quest quest, String me) {
