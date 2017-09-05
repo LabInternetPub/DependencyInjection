@@ -98,13 +98,15 @@ public class Client implements ServiceSetter {
 
 * Setter injection gives a lot of flexibility to the Client because the Service can be changed in any moment during the execution. The drawback is that the Client may be used before the dependency is injected.
 
-# Dependency Inversion in Spring
-We have three ways of indicating/configuring the dependency inversion:
+# Dependency Injection in Spring
+We have three ways of indicating/configuring the dependency injection:
 * With XML files: this tends to be an old-fashined way of working with Spring so we aren't going to use it in this semester
-* With java configuration: is the most explicit way. The advantage is its explicitness and that all configuration is centralized in one or few files
-* With implicit bean discovery and automatic wiring: uses the whole power of Spring machinery. The main drawbacks are its implicitness (sometimes is hard to know what's going on) and that some Spring annotations are scattered all over the "domain" java files.
+* With java configuration: is the most explicit way. The advantage is its explicitness and that all injection configurations are centralized in one or few files
+* With implicit bean discovery and automatic wiring: uses the whole power of Spring machinery. The main drawbacks are its implicitness (sometimes it is hard to know what's going on) and that some Spring annotations are scattered all over the "domain" java files.
 
 In this repository you'll find an example inspired from the one in the book Spring in Action. There are three branches:
 * master: corresponds to a first example with java configuration where the name of the beans methods are used
 * javaConfig: illustrates how to use the bean names for injection
 * AutomaticWiring: uses the implicit bean discovery
+
+The example basically consists of a Knight that can embrace in different types of Quests wich are . These injected to the knight.
