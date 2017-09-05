@@ -12,7 +12,10 @@ import java.io.PrintStream;
 public class SlayDragonQuest implements Quest {
     private PrintStream stream;
 
-    @Autowired
+    public SlayDragonQuest() {
+        stream = System.out;
+    }
+
     public SlayDragonQuest(PrintStream stream) {
         this.stream = stream;
     }

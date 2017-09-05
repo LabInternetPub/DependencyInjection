@@ -11,6 +11,10 @@ import java.io.PrintStream;
 public class RescueDamselQuest implements Quest {
     private PrintStream stream;
 
+    public RescueDamselQuest() {
+        stream = System.out;
+    }
+
     public RescueDamselQuest(PrintStream stream) {
         this.stream = stream;
     }
