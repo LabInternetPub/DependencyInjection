@@ -118,3 +118,16 @@ The example basically consists of Knights that can embrace in different types of
 * automaticWiring: Here the configuration file only indicates where the Spring must scan to look for the beans that should create. In the package domain (the one that is scanned) contains classes that are noted as @Component indicating that an object of the classes must be created (the beans). Note that knights are injected the quest by means of the @Autowired anotation.
 
 See that in the last case only one object of each class is created. So we cannot have two differents knights of the same type as we had in the first two branches.
+
+## Beans Lifecycle
+
+Spring is in charge of creating and destroing all beans as instructed by programmers through the different configuration files. The lifecycle of a bean rougthy speaking consists of a phase creation, use and destruction. The creation phase can be divided in discovery, object creation, setting attributes and initializing. The phase of destruction consists on a method for disposing resources. These phases are done through callback methods (called by the Spring framework) that can be customized by the programmer. However it is not usually necessary to do so.
+
+Also there is a phase of destroing 
+
+![alt text](https://github.com/LabInternetPub/DependencyInjection/blob/master/img/Spring-bean-life-cycle.png "Bean lifecycle")
+
+Once the beans are created they "live" in an ApplicationContext where they can be found and used. There are diffent scopes for the beans, most of which are only available in a web application:
+* Singleton: the default. A single instance object is created for each definition class
+* Prototype: there may be several instance objects for a given class
+* Request, Session, GlobalSession, Application, WebSocket: correspond to web related scopes that we'll see during the course
