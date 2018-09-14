@@ -115,9 +115,8 @@ The example basically consists of Knights that can embrace in different types of
 
 * javaConfig: Here the configuration file defines the same knights but two different quest (one for each type of quest). Observe also that the DamselRescuingKnight is now using the dependency injection. The main difference with the former brach is that the injection is done by the name of the definied beans rather than calling the defining methods.
 
-* automaticWiring: Here the configuration file only indicates where the Spring must scan to look for the beans that should create. In the package domain (the one that is scanned) contains classes that are noted as @Component indicating that an object of the classes must be created (the beans). Note that knights are injected the quest by means of the @Autowired anotation.
+* automaticWiring: Here the configuration file only indicates where the Spring must scan to look for the beans that should create. In the package domain (the one that is scanned) contains classes that are noted as @Component indicating that an object of the classes must be created (the beans). Note that knights are injected the quest by means of the @Autowired anotation, which in most cases is not required because Spring infers that it needs to inject a bean by the type of the parameter. With automatic wiring only one object of each class is created. So we cannot have two differents knights of the same type as we had in the first two branches. See also that we have a (unnecessary) configuration class that indicates which packages to scan with the @ComponentScan annotation. This class is unnecessary because the @SpringBoot application annotation in the main file (DemoApplication.java) already contains the @ComponentScan that (if not modified) scans all classes and packages in the same package and below. 
 
-See that in the last case only one object of each class is created. So we cannot have two differents knights of the same type as we had in the first two branches.
 
 ## Beans Lifecycle
 
@@ -127,7 +126,7 @@ Also there is a phase of destroing
 
 ![alt text](https://github.com/LabInternetPub/DependencyInjection/blob/master/img/Spring-bean-life-cycle.png "Bean lifecycle")
 
-Once the beans are created they "live" in an ApplicationContext where they can be found and used. There are diffent scopes for the beans, most of which are only available in a web application:
+Once the beans are created they "live" in an ApplicationContext where they can be found and used. There are different scopes for the beans, most of which are only available in a web application:
 * Singleton: the default. A single instance object is created for each definition class
 * Prototype: there may be several instance objects for a given class
 * Request, Session, GlobalSession, Application, WebSocket: correspond to web related scopes that we'll see during the course
